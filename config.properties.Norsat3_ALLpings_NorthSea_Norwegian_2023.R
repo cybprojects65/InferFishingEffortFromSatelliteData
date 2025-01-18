@@ -1,0 +1,48 @@
+####Configuration file of the vessel data workflow####
+#DATA
+#input_data="./inputdata/GFW_AISdata_NorthSea_NowegianSea_2015.csv"
+#input_data="./inputdata/GFW_AISdata_NorthAtlantic_2015.csv"
+#input_data="./inputdata/NorSat3_AISdata_NorthSea_NorwegianSea_2023.csv"
+input_data="./inputdata/NorSat3_ALLdata_NorthSea_NorwegianSea_2023.csv"
+output_features="./cache/features.csv"
+#output_analysis="./results/Effort_GFW_AISdata_NorthSea_NowegianSea_2015.csv"
+#output_analysis="./results/Effort_GFW_AISdata_NorthSea_NowegianSea_2015_cluster.csv"
+#output_analysis="./results/Effort_GFW_AISdata_NorthAtlantic_2015.csv"
+#output_analysis="./results/Effort_NorSat3_AISdata_NorthSea_NorwegianSea_2023.csv"
+output_analysis="./results/Effort_NorSat3_ALLdata_NorthSea_NorwegianSea_2023.csv"
+##ANALYSIS
+resolution=0.5
+vessel_behaviour_analysis=T
+use_clustering_for_anomaly_detection=F
+##THRESHOLDS
+minimum_confidence=60
+#closeness to harbour threshold in NM
+too_close_to_harbour=1.2
+#bb extension from the data bb. This is the times the resolution will be used for extending (e.g., 5x0.5 to the top/left/right/down).
+bounding_box_extension=1
+#maximum number of samples for each vessel to conduct behaviour analysis
+max_samples_vessel_behaviour=5000
+#Deprecated: is overwritten by the fraction parameters
+maximum_fishing_hours_per_point=10
+#Expected 25perc of ratio between AIS data and all data: GFW: 0.5 NSAT3: 0.23
+fraction_of_abundance_observation_lower_bound=1.5
+#Expected 75perc of ratio between AIS data and all data:  GFW: 1 NSAT3: 0.53
+fraction_of_abundance_observation_upper_bound=3
+##AUXILIARY FIXED FILES AND FOLDERS
+#cache folder
+cache="./cache"
+#file containing global port and harbour distribution
+ports_file="./auxiliaryfiles/cleaned_ports_QGIS.csv"
+#vessel behaviour analysis trained on all GFW data
+behaviour_trained="./auxiliaryfiles/kmeans_trained.bin"
+#oceanic current file locations
+currents_u_file="./auxiliaryfiles/currents_d0_east_05res.asc"
+currents_v_file="./auxiliaryfiles/currents_d0_north_05res.asc"
+#batrymetry ANN location
+bathymetryANN="./auxiliaryfiles/bathymetryANN.bin"
+#Variational Autoencoder jar file location
+vaejar="C:/Users/Utente/eclipse-workspace-ASR/VariationalAutoencoder/vae.jar"
+output_vae_folder="./outvae/"
+output_vae_file="./outvae/classification.csv"
+#Global Fishing Watch Reference distribution
+GFW_raster_reference="./referencedata/gfw_data_2023.tif"
